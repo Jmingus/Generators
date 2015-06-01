@@ -1,4 +1,4 @@
-VERSION = 'v1.0.0'
+VERSION = 'v1.1.0'
   def get(prompt)
     yes?(prompt + ' (y/n) >')
   end
@@ -12,6 +12,13 @@ gem_group :test, :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'faker'
+end
+
+inject_into_file ".gitignore", after: "/tmp\n" do
+  <<-CODE
+  .DS_Store
+  .idea/
+  CODE
 end
 
 after_bundle do
