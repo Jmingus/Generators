@@ -21,6 +21,10 @@ inject_into_file ".gitignore", after: "/tmp\n" do
   CODE
 end
 
+file 'Procfile', <<-CODE
+  web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+CODE
+
 after_bundle do
   puts 'All done!'
 end
